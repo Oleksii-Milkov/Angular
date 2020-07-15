@@ -1,0 +1,33 @@
+<button class="btn btn-primary" *ngIf="!show" (click)="showCard()">Add</button>
+<div class="container d-flex justify-content-center flex-wrap">
+
+  <div class="card shadow bg-light m-2" *ngIf="show">
+    <div class="card-body">
+      <textarea #NAME autosize spellcheck="false" onchange="angular">Enter name</textarea>
+      <textarea #DESCRIPTION autosize spellcheck="false">enter description</textarea>
+      <textarea #CATEGORY autosize spellcheck="false">enter category</textarea>
+      <textarea #PRICE autosize spellcheck="false">enter price</textarea>
+    </div>
+    <hr>
+    <div class="d-inline-flex justify-content-end">
+      <button class="btn btn-success m-2"
+        (click)="addProduct(NAME.value, DESCRIPTION.value, CATEGORY.value, PRICE.value)">Add</button>
+      <button class="btn btn-danger m-2" (click)="showCard()">Cancel</button>
+    </div>
+  </div>
+
+  <div class="card shadow m-2" *ngFor="let product of productList">
+    <div class="card-body">
+      <textarea #NAME autosize spellcheck="false" onchange="angular">{{product.name}}</textarea>
+      <textarea #DESCRIPTION autosize spellcheck="false">{{product.description}}</textarea>
+      <textarea #CATEGORY autosize spellcheck="false">{{product.category}}</textarea>
+      <textarea #PRICE autosize spellcheck="false">{{product.price}}</textarea>
+    </div>
+    <hr>
+    <div class="d-inline-flex justify-content-end">
+      <button class="btn btn-success m-2"
+        (click)="updateProduct(product.id, NAME.value, DESCRIPTION.value, CATEGORY.value, PRICE.value)">Set</button>
+      <button class="btn btn-danger m-2" (click)="deleteProduct(product.id)">Delete</button>
+    </div>
+  </div>
+</div>

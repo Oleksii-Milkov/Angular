@@ -1,0 +1,7 @@
+<div class="container d-flex align-content-center justify-content-around flex-wrap">
+  <div class="card shadow m-2" *ngFor="let products of productList" (click)="productDetailed(products.id)">
+    <div class="card-body">
+      <h5 class="card-title">{{products.name}}</h5>
+    </div>
+  </div>
+</div>
